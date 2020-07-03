@@ -37,6 +37,10 @@ class NoteForm extends Component {
       .then(() => this.getAllUsers())
       .catch((err) => console.log(err))
 
+  
+
+  
+
   render() {
     return (
       <form action='POST'>
@@ -83,6 +87,7 @@ class NoteForm extends Component {
             <label htmlFor='end_date'>End date:</label>
             <input type='date' name='end_date' id='end_date' />
           </div>
+          <input type="file" name="file" id="file"/>
         </div>
         <button type="submit">Create note</button>
         <hr/>
