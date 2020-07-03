@@ -1,4 +1,14 @@
+# Note App
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+This would be the corresponding frontend app [to this API](https://github.com/Elvirarp92/django-note-app-api). Work in progress.
+
+## Roadmap
+
+* Handling cross-references to Users and Tags on note creation
+* File upload
+* Edit function
 
 ## Available Scripts
 
