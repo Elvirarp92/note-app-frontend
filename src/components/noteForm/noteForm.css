@@ -1,0 +1,14 @@
+.flex-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.label-wrapper {
+  display: block;
+}
+
+.label-wrapper > label {
+  display: block;
+}
+
