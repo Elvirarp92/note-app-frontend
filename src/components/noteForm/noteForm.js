@@ -13,6 +13,7 @@ class NoteForm extends Component {
     this.state = {
       fetchedUsers: [],
       fetchedTags: [],
+      noteInfo: {}
     }
 
     this.usersService = new UsersService()
@@ -38,7 +39,12 @@ class NoteForm extends Component {
       .catch((err) => console.log(err))
 
   
-
+  handleInputChange = (event) => {
+    let noteInfoCopy = {...this.state.noteInfo}
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value
+    noteInfoCopy = {...noteInfoCopy, [event.target.name]: value}
+    this.setState({noteInfo: noteInfoCopy})
+  }
   
 
   render() {
@@ -46,12 +52,12 @@ class NoteForm extends Component {
       <form action='POST'>
         <div className='label-wrapper'>
           <label htmlFor='note'>Note text:</label>
-          <textarea name='note' id='note' cols='30' rows='10'></textarea>
+          <textarea name='note' id='note' cols='30' rows='10' onChange={this.handleInputChange}></textarea>
         </div>
         <div className='flex-wrapper'>
           <div className='label-wrapper'>
             <label htmlFor='user'>User:</label>
-            <select name='user' id='user'>
+            <select name='user' id='user' onChange={this.handleInputChange}>
               {this.state.fetchedUsers.map((elm) => (
                 <option id={elm.id} value={elm.id}>
                   {elm.name}
@@ -61,7 +67,7 @@ class NoteForm extends Component {
           </div>
           <div className='label-wrapper'>
             <label htmlFor='type'>Type:</label>
-            <select name='type' id='type'>
+            <select name='type' id='type' onChange={this.handleInputChange}>
               <option value='NEW'>New</option>
               <option value='RDY'>Ready</option>
               <option value='WIP'>Work in progress</option>
@@ -71,7 +77,7 @@ class NoteForm extends Component {
           </div>
           <div className='label-wrapper'>
             <label htmlFor='tags'>Tags:</label>
-            <select name='tags' id='tags' multiple>
+            <select name='tags' id='tags' multiple onChange={this.handleInputChange}>
               {this.state.fetchedTags.map((elm) => (
                 <option id={elm.id} value={elm.id}>
                   {elm.name}
@@ -81,13 +87,13 @@ class NoteForm extends Component {
           </div>
           <div className='label-wrapper'>
             <label htmlFor='is_task'>Is it a task?</label>
-            <input type='checkbox' name='is_task' id='is_task' />
+            <input type='checkbox' name='is_task' id='is_task' onChange={this.handleInputChange} />
           </div>
           <div className='label-wrapper'>
             <label htmlFor='end_date'>End date:</label>
-            <input type='date' name='end_date' id='end_date' />
+            <input type='date' name='end_date' id='end_date' onChange={this.handleInputChange} />
           </div>
-          <input type="file" name="file" id="file"/>
+          <input type="file" name="file" id="file" onChange={this.handleInputChange}/>
         </div>
         <button type="submit">Create note</button>
         <hr/>
