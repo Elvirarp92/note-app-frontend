@@ -3,7 +3,7 @@ import React from 'react'
 const NoteList = (props) => {
   return(
     <section>
-      <h2>Notas</h2>
+      {props.notes.map((elm) => (<p id={elm.id}>{elm.note}</p>))}
     </section>
   )
 }

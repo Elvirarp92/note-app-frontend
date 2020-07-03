@@ -30,7 +30,7 @@ class App extends Component {
   render() {
     return (
       <main className='App'>
-        <NoteList />
+        <NoteList notes={this.state.notes} />
       </main>
     )
   }
