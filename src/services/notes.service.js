@@ -12,5 +12,5 @@ export default class services {
 
   getNote = (id) => this.service.get(`/${id}`)
 
-  createNote = () => this.service.post(`/`)
+  createNote = ({creation_date, end_date, note, is_task, note_type}) => this.service.post(`/`, {creation_date, end_date, note, is_task, note_type})
 }
